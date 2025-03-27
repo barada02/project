@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a modern expense tracking application built with React, TypeScript, and Tailwind CSS. It allows users to track their expenses, set budgets, and visualize spending patterns through an intuitive dashboard.
+This is a modern expense tracking application built with React, JavaScript, and Tailwind CSS. It allows users to track their expenses, set budgets, and visualize spending patterns through an intuitive dashboard.
 
 ## Features
 
@@ -16,7 +16,7 @@ This is a modern expense tracking application built with React, TypeScript, and 
 
 - **Frontend**:
   - React 18
-  - TypeScript
+  - JavaScript
   - React Router for navigation
   - Recharts for data visualization
   - Tailwind CSS for styling
@@ -37,27 +37,25 @@ This is a modern expense tracking application built with React, TypeScript, and 
 ├── public/               # Static assets
 ├── src/
 │   ├── components/       # Reusable UI components
-│   │   └── Sidebar.tsx   # Application sidebar navigation
+│   │   └── Sidebar.jsx   # Application sidebar navigation
 │   ├── context/          # React context providers
-│   │   └── AuthContext.tsx # Authentication context
+│   │   └── AuthContext.jsx # Authentication context
 │   ├── pages/            # Application pages
-│   │   ├── Budget.tsx    # Budget management page
-│   │   ├── Dashboard.tsx # Main dashboard with charts
-│   │   ├── Expenses.tsx  # Expense tracking page
-│   │   └── Login.tsx     # User authentication page
-│   ├── App.tsx           # Main application component
+│   │   ├── Budget.jsx    # Budget management page
+│   │   ├── Dashboard.jsx # Main dashboard with charts
+│   │   ├── Expenses.jsx  # Expense tracking page
+│   │   └── Login.jsx     # User authentication page
+│   ├── App.jsx           # Main application component
 │   ├── index.css         # Global styles
-│   ├── main.tsx          # Application entry point
-│   ├── types.ts          # TypeScript type definitions
-│   └── vite-env.d.ts     # Vite environment types
+│   ├── main.jsx          # Application entry point
+│   └── types.js          # JavaScript data structure documentation
 ├── .eslintrc.js          # ESLint configuration
 ├── db.json               # JSON Server database file
 ├── index.html            # HTML entry point
 ├── package.json          # Project dependencies and scripts
 ├── postcss.config.js     # PostCSS configuration
 ├── tailwind.config.js    # Tailwind CSS configuration
-├── tsconfig.json         # TypeScript configuration
-└── vite.config.ts        # Vite configuration
+└── vite.config.js        # Vite configuration
 ```
 
 ## Getting Started
@@ -114,34 +112,37 @@ This is a modern expense tracking application built with React, TypeScript, and 
 ## Data Structure
 
 ### User
-```typescript
-interface User {
-  id: number;
-  email: string;
-  password: string;
+```javascript
+// User object structure
+{
+  id: number,
+  email: string,
+  password: string
 }
 ```
 
 ### Expense
-```typescript
-interface Expense {
-  id: number;
-  userId: number;
-  category: string;
-  amount: number;
-  date: string;
-  description: string;
+```javascript
+// Expense object structure
+{
+  id: number,
+  userId: number,
+  category: string,
+  amount: number,
+  date: string,
+  description: string
 }
 ```
 
 ### Budget
-```typescript
-interface Budget {
-  id: number;
-  userId: number;
-  category: string;
-  amount: number;
-  period: string;
+```javascript
+// Budget object structure
+{
+  id: number,
+  userId: number,
+  category: string,
+  amount: number,
+  period: string
 }
 ```
 
