@@ -7,7 +7,7 @@ import BudgetPage from './pages/Budget';
 import Expenses from './pages/Expenses';
 import Sidebar from './components/Sidebar';
 
-const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const PrivateRoute = ({ children }) => {
   const { user } = useAuth();
   return user ? (
     <div className="flex">

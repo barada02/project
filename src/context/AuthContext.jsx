@@ -1,16 +1,15 @@
 import React, { createContext, useContext, useState } from 'react';
-import { User, AuthContextType } from '../types';
 
-const AuthContext = createContext<AuthContextType | null>(null);
+const AuthContext = createContext(null);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email, password) => {
     try {
       const response = await fetch('http://localhost:3001/users');
       const users = await response.json();
-      const foundUser = users.find((u: User) => u.email === email && u.password === password);
+      const foundUser = users.find((u) => u.email === email && u.password === password);
       
       if (foundUser) {
         setUser(foundUser);

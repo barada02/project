@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
-import { Expense } from '../types';
 import { useAuth } from '../context/AuthContext';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
 const Dashboard = () => {
   const { user } = useAuth();
-  const [expenses, setExpenses] = useState<Expense[]>([]);
+  const [expenses, setExpenses] = useState([]);
   const [totalSpent, setTotalSpent] = useState(0);
 
   useEffect(() => {
@@ -16,20 +15,20 @@ const Dashboard = () => {
         const response = await fetch(`http://localhost:3001/expenses?userId=${user.id}`);
         const data = await response.json();
         setExpenses(data);
-        setTotalSpent(data.reduce((acc: number, curr: Expense) => acc + curr.amount, 0));
+        setTotalSpent(data.reduce((acc, curr) => acc + curr.amount, 0));
       }
     };
     fetchExpenses();
   }, [user]);
 
-  const expensesByCategory = expenses.reduce((acc: any, curr: Expense) => {
+  const expensesByCategory = expenses.reduce((acc, curr) => {
     acc[curr.category] = (acc[curr.category] || 0) + curr.amount;
     return acc;
   }, {});
 
   const pieData = Object.entries(expensesByCategory).map(([category, amount]) => ({
     name: category,
-    value: amount as number,
+    value: amount,
   }));
 
   return (
@@ -74,7 +73,7 @@ const Dashboard = () => {
               {Object.entries(expensesByCategory).map(([category, amount]) => (
                 <div key={category} className="flex justify-between items-center">
                   <span>{category}</span>
-                  <span className="font-medium">${(amount as number).toFixed(2)}</span>
+                  <span className="font-medium">${amount.toFixed(2)}</span>
                 </div>
               ))}
             </div>
